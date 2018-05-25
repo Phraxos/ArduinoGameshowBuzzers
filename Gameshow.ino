@@ -1,29 +1,33 @@
+// Buzzers
 const int buzzerOne = 12;
 const int buzzerTwo = 13;
 
+// Wireless operator remote
 const int buttonOne = 8;
 const int buttonTwo = 9;
 const int buttonThree = 10;
 const int buttonFour = 11;
 
+// Sirens
+int sirenOne = 6;
+int sirenTwo = 7;
+
+// Buzzer Settings
 const int debounceSample = 20;
 const int debounceSize = 15;
 
+// Siren Settings
 const unsigned long sirenMs = 6000; // how long to run siren
 unsigned long sirenStart;
 unsigned long sirenStop;
 
-
+// State
 int buzzerOneState;
 int buzzerTwoState;
-
 int buttonOneState;
 int buttonTwoState;
 int buttonThreeState;
 int buttonFourState;
-
-int sirenOne = 6;
-int sirenTwo = 7;
 
 void setup() {
   // Setup buzzers
@@ -81,13 +85,13 @@ void loop() {
     (oneCount > debounceSize) ||
     (twoCount > debounceSize)
   ) {
-    Serial.print("One total:");
+    Serial.print("Buzzer one total:");
     Serial.println(oneCount);
 
-    Serial.print("Two total:");
+    Serial.print("Buzzer two total:");
     Serial.println(twoCount);
 
-    // Don't allow people to hold the buttons
+    // Don't allow people to hold both buzzers
     if (oneCount != twoCount) {
       if (oneCount > twoCount) {
         oneWins();
